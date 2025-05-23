@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App.jsx';
 import { store } from './Redux/store.js';
-import firebase from './FirebaseConfig.js'; // <-- تهيئة Firebase
+import firebase from './firebaseConfig'; // <-- تهيئة Firebase
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
