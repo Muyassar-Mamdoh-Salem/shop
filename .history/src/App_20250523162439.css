@@ -1,0 +1,82 @@
+ .arabic-swal {
+          font-family: 'Tajawal', 'Arial', sans-serif;
+          direction: rtl;
+          border-radius: 12px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .swal-confirm-button {
+          background-color: #e53e3e;
+          color: white;
+          border: none;
+          padding: 10px 24px;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          margin-right: 8px;
+        }
+        .swal-confirm-button:hover {
+          background-color: #c53030;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(229, 62, 62, 0.3);
+        }
+        .swal-cancel-button {
+          background-color: #f0f0f0;
+          color: #4a5568;
+          border: none;
+          padding: 10px 24px;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          margin-left: 8px;
+        }
+        .swal-cancel-button:hover {
+          background-color: #e2e8f0;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(74, 85, 104, 0.1);
+        }
+        .swal-actions {
+          margin-top: 1.5rem;
+        }/* @import "tailwindcss"; */
+html {
+  scroll-behavior: smooth;
+}
+
+ .arabic-swal {
+          font-family: 'Tajawal', 'Arial', sans-serif;
+          direction: rtl;
+          border-radius: 12px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .swal-confirm-button {
+          background-color: #e53e3e;
+          color: white;
+          border: none;
+          padding: 10px 24px;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          margin-right: 8px;
+        }
+        .swal-confirm-button:hover {
+          background-color: #c53030;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(229, 62, 62, 0.3);
+        }
+        .swal-cancel-button {
+          background-color: #f0f0f0;
+          color: #4a5568;
+          border: none;
+          padding: 10px 24px;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          margin-left: 8px;
+        }
+        .swal-cancel-button:hover {
+          background-color: #e2e8f0;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(74, 85, 104, 0.1);
+        }
+        .swal-actions {
+          margin-top: 1.5rem;
+        }
