@@ -17,8 +17,6 @@ const Header = () => {
 
  const totalItems = useSelector((state) => state.app.products.length);
   
- const totalFavorites = useSelector((state) => state.app.favorites.length);
-
 
 
   const handleLogout = () => {

@@ -15,11 +15,11 @@ const Header = () => {
   const dispatch = useDispatch();
   const [openBar, setOpenBar] = useState(false);
 
- const totalItems = useSelector((state) => state.app.products.length);
-  
- const totalFavorites = useSelector((state) => state.app.favorites.length);
+  const totalItems = useSelector((state) =>
+    state.app.products.reduce((total, item) => total + item.quantity, 0)
+  );
 
-
+  const totalFavorites = useSelector((state) => state.app.favorites.length);
 
   const handleLogout = () => {
     Swal.fire({

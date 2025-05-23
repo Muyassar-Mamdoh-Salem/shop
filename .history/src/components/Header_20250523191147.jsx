@@ -16,10 +16,9 @@ const Header = () => {
   const [openBar, setOpenBar] = useState(false);
 
  const totalItems = useSelector((state) => state.app.products.length);
-  
- const totalFavorites = useSelector((state) => state.app.favorites.length);
+  );
 
-
+  const totalFavorites = useSelector((state) => state.app.favorites.length);
 
   const handleLogout = () => {
     Swal.fire({
