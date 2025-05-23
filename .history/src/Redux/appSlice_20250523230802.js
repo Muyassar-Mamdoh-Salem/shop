@@ -1,23 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// تحميل البيانات من localStorage عند بدء التطبيق (إذا كانت موجودة)
+// تحميل البيانات من localStorage
 const savedProducts = localStorage.getItem("products");
 const savedUserInfo = localStorage.getItem("UserInfo");
 const savedFavorites = localStorage.getItem("favorites");
 
-// الحالة الابتدائية (initial state)
 const initialState = {
   products: savedProducts ? JSON.parse(savedProducts) : [],
   UserInfo: savedUserInfo ? JSON.parse(savedUserInfo) : null,
   favorites: savedFavorites ? JSON.parse(savedFavorites) : [],
-  searchTerm: "", // قيمة النص في خانة البحث
+   searchTerm: "",
 };
 
 const appSlice = createSlice({
   name: "Ecommerce",
   initialState,
   reducers: {
-    // إضافة منتج للسلة أو زيادة الكمية إذا المنتج موجود
     addToCart: (state, action) => {
       const item = state.products.find(item => item?.id === action.payload?.id);
       if (item) {
@@ -32,7 +30,6 @@ const appSlice = createSlice({
       localStorage.setItem("products", JSON.stringify(state.products));
     },
 
-    // زيادة كمية منتج في السلة
     increment: (state, action) => {
       const item = state.products.find(item => item.id === action.payload.id);
       if (item) {
@@ -41,7 +38,6 @@ const appSlice = createSlice({
       localStorage.setItem("products", JSON.stringify(state.products));
     },
 
-    // تقليل كمية منتج في السلة (لكن لا تقل عن 1)
     decrement: (state, action) => {
       const item = state.products.find(item => item.id === action.payload.id);
       if (item && item.quantity > 1) {
@@ -49,34 +45,33 @@ const appSlice = createSlice({
       }
       localStorage.setItem("products", JSON.stringify(state.products));
     },
+   RemoveOneCart: (state, action) => {
+  const { id } = action.payload;
+  if (!id) return; // حماية في حال عدم وجود id
 
-    // إزالة منتج محدد من السلة
-    RemoveOneCart: (state, action) => {
-      const { id } = action.payload;
-      if (!id) return; // حماية إذا لم يكن هناك id
-      state.products = state.products.filter(item => item.id !== id);
-      localStorage.setItem("products", JSON.stringify(state.products));
-    },
+  // تحديث قائمة المنتجات بإزالة المنتج الذي يطابق id
+  state.products = state.products.filter(item => item.id !== id);
 
-    // تفريغ السلة بالكامل
+  // تحديث البيانات في localStorage
+  localStorage.setItem("products", JSON.stringify(state.products));
+}
+,
+
     RemoveAllCart: (state) => {
       state.products = [];
       localStorage.removeItem("products");
     },
 
-    // تعيين بيانات المستخدم بعد تسجيل الدخول
     setUser: (state, action) => {
       state.UserInfo = action.payload;
       localStorage.setItem("UserInfo", JSON.stringify(action.payload));
     },
 
-    // تسجيل خروج المستخدم ومسح بياناته
     Logoutuser: (state) => {
       state.UserInfo = null;
       localStorage.removeItem("UserInfo");
     },
 
-    // إضافة منتج للمفضلة إذا لم يكن موجودًا
     addToFavorites: (state, action) => {
       const exists = state.favorites.find(item => item.id === action.payload.id);
       if (!exists) {
@@ -85,13 +80,11 @@ const appSlice = createSlice({
       localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
 
-    // إزالة منتج من المفضلة
     removeFromFavorites: (state, action) => {
       state.favorites = state.favorites.filter(item => item.id !== action.payload.id);
       localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
 
-    // تبديل حالة المنتج في المفضلة (إضافة أو إزالة)
     toggleFavorite: (state, action) => {
       const itemId = action.payload.id;
       const exists = state.favorites.find(item => item.id === itemId);
@@ -102,15 +95,15 @@ const appSlice = createSlice({
       }
       localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
-
-    // تحديث قيمة نص البحث في الواجهة
-    setSearchTerm: (state, action) => {
-      state.searchTerm = action.payload;
-    },
   },
+
+  setSearchTerm: (state, action) => {
+    state.searchTerm = action.payload;
+  },
+
 });
 
-// تصدير الأفعال (actions)
+// تصدير الأفعال
 export const {
   addToCart,
   increment,
@@ -122,8 +115,8 @@ export const {
   addToFavorites,
   removeFromFavorites,
   toggleFavorite,
-  setSearchTerm,
+  
 } = appSlice.actions;
 
-// تصدير الريديُسر (reducer)
+// تصدير الـ reducer
 export default appSlice.reducer;

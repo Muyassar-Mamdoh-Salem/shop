@@ -5,7 +5,7 @@ import { FaSearch, FaUser, FaShoppingCart, FaBars, FaSignOutAlt } from "react-ic
 import { MdFavoriteBorder } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import {setSearchTerm} from "../Redux/appSlice"
+
 import { getAuth, signOut } from "firebase/auth";
 import { Logoutuser } from "../Redux/appSlice";
 import Swal from "sweetalert2";

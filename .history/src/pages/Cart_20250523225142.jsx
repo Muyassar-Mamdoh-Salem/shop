@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { increment, decrement, RemoveAllCart ,RemoveOneCart } from '../Redux/appSlice';
+import { increment, decrement, RemoveAllCart } from '../Redux/appSlice';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
@@ -86,7 +86,7 @@ const Cart = () => {
                     -
                   </button>
                 </div>
-                <button className='mt-3 text-sm text-white border border-white rounded-lg px-2 py-1 hover:bg-white hover:text-gray-900 transition' onClick={()=> dispatch(RemoveOneCart({id:product.id}))}>clear product</button>
+                <button onClick={()=>dispatsh(Rem)}>clear product</button>
               </div>
             </div>
           );

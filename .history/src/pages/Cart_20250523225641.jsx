@@ -86,7 +86,7 @@ const Cart = () => {
                     -
                   </button>
                 </div>
-                <button className='mt-3 text-sm text-white border border-white rounded-lg px-2 py-1 hover:bg-white hover:text-gray-900 transition' onClick={()=> dispatch(RemoveOneCart({id:product.id}))}>clear product</button>
+                <button className='mt-3 text-sm text-white underline' onClick={()=> dispatch(RemoveOneCart({id:product.id}))}>clear product</button>
               </div>
             </div>
           );

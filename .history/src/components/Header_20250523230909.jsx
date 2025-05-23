@@ -5,7 +5,6 @@ import { FaSearch, FaUser, FaShoppingCart, FaBars, FaSignOutAlt } from "react-ic
 import { MdFavoriteBorder } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import {setSearchTerm} from "../Redux/appSlice"
 import { getAuth, signOut } from "firebase/auth";
 import { Logoutuser } from "../Redux/appSlice";
 import Swal from "sweetalert2";
@@ -15,7 +14,6 @@ const Header = () => {
   const UserInfo = useSelector((state) => state.app.UserInfo);
   const dispatch = useDispatch();
   const [openBar, setOpenBar] = useState(false)
-  
   ;
     const searchTerm = useSelector((state) => state.app.searchTerm);
 
@@ -122,8 +120,6 @@ const Header = () => {
                 type="text"
                 className="flex-grow h-10 rounded-l-lg border-2 border-gray-200 px-4 focus:outline-none focus:border-blue-400"
                 placeholder="Search..."
-                  value={searchTerm}
-      onChange={(e) => dispatch(setSearchTerm(e.target.value))}
               />
               <button className="h-10 bg-blue-500 hover:bg-blue-600 text-white rounded-r-lg px-4 flex items-center justify-center transition-colors duration-300">
                 <FaSearch className="w-5 h-5" />

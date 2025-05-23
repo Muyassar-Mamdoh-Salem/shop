@@ -2,7 +2,7 @@ import { useLoaderData, Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, toggleFavorite } from '../Redux/appSlice';
-import SearchInput from '../components/SearchInput';
+import Se
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.15 } },

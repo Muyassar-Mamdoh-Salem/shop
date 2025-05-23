@@ -110,7 +110,7 @@ const appSlice = createSlice({
   },
 });
 
-// تصدير الأفعال (actions)
+// تصدير الأفعال (actions) لاستخدامها في المكونات
 export const {
   addToCart,
   increment,
@@ -125,5 +125,5 @@ export const {
   setSearchTerm,
 } = appSlice.actions;
 
-// تصدير الريديُسر (reducer)
+// تصدير الريديُسر (reducer) للاستخدام في store
 export default appSlice.reducer;
