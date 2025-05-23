@@ -55,7 +55,7 @@ const appSlice = createSlice({
       localStorage.setItem("UserInfo", JSON.stringify(action.payload));
     },
 
-    Logoutuser: (state) => {
+    logoutUser: (state) => {
       state.UserInfo = null;
       localStorage.removeItem("UserInfo");
     },
@@ -95,7 +95,7 @@ export const {
   decrement,
   RemoveAllCart,
   setUser,
-  Logoutuser,       // ✅ الاسم الصحيح هنا
+  logoutUser,       // ✅ الاسم الصحيح هنا
   addToFavorites,
   removeFromFavorites,
   toggleFavorite

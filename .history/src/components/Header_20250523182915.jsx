@@ -287,7 +287,7 @@ const Header = () => {
             <div className="mt-6 flex items-center ">
               <input
                 type="text"
-                className="flex-grow h-10 w-1/2 rounded-l-lg px-3 focus:outline-none"
+                className="flex-grow h-10  rounded-l-lg px-3 focus:outline-none"
                 placeholder="Search..."
               />
               <button className="h-10 bg-blue-600 text-white rounded-r-lg px-3 flex items-center justify-center">

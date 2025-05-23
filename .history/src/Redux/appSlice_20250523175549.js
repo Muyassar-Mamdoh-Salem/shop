@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// تحميل البيانات من localStorage
+// استدعاء البيانات من localStorage أو إعطاء قيمة افتراضية
 const savedProducts = localStorage.getItem("products");
 const savedUserInfo = localStorage.getItem("UserInfo");
 const savedFavorites = localStorage.getItem("favorites");
@@ -72,34 +72,22 @@ const appSlice = createSlice({
       state.favorites = state.favorites.filter(item => item.id !== action.payload.id);
       localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
-
-    toggleFavorite: (state, action) => {
-      const itemId = action.payload.id;
-      const exists = state.favorites.find(item => item.id === itemId);
-
-      if (exists) {
-        state.favorites = state.favorites.filter(item => item.id !== itemId);
-      } else {
-        state.favorites.push(action.payload);
-      }
-
-      localStorage.setItem("favorites", JSON.stringify(state.favorites));
-    },
   },
+
+
+
+  
 });
 
-// تصدير الأفعال
 export const {
   addToCart,
   increment,
   decrement,
   RemoveAllCart,
   setUser,
-  Logoutuser,       // ✅ الاسم الصحيح هنا
+  Logoutuser,
   addToFavorites,
   removeFromFavorites,
-  toggleFavorite
 } = appSlice.actions;
 
-// تصدير الـ reducer
 export default appSlice.reducer;

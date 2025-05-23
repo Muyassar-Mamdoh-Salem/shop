@@ -186,7 +186,7 @@ const Header = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-gray-700 focus:outline-none "
+              className="md:hidden text-gray-700 focus:outline-none"
               onClick={() => setOpenBar(!openBar)}
               aria-label="Toggle menu"
             >
@@ -203,7 +203,7 @@ const Header = () => {
       >
         <div className="p-4">
           <button
-            className="text-white p-2 focus:outline-none "
+            className="text-white p-2 focus:outline-none ml-20"
             onClick={() => setOpenBar(false)}
             aria-label="Close menu"
           >
@@ -284,10 +284,10 @@ const Header = () => {
             </nav>
 
             {/* Mobile Search */}
-            <div className="mt-6 flex items-center ">
+            <div className="mt-6 flex items-center">
               <input
                 type="text"
-                className="flex-grow h-10 w-1/2 rounded-l-lg px-3 focus:outline-none"
+                className="flex-grow h-10 rounded-l-lg px-3 focus:outline-none"
                 placeholder="Search..."
               />
               <button className="h-10 bg-blue-600 text-white rounded-r-lg px-3 flex items-center justify-center">

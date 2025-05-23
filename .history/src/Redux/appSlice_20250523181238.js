@@ -1,16 +1,3 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-// تحميل البيانات من localStorage
-const savedProducts = localStorage.getItem("products");
-const savedUserInfo = localStorage.getItem("UserInfo");
-const savedFavorites = localStorage.getItem("favorites");
-
-const initialState = {
-  products: savedProducts ? JSON.parse(savedProducts) : [],
-  UserInfo: savedUserInfo ? JSON.parse(savedUserInfo) : null,
-  favorites: savedFavorites ? JSON.parse(savedFavorites) : [],
-};
-
 const appSlice = createSlice({
   name: "Ecommerce",
   initialState,
@@ -73,6 +60,7 @@ const appSlice = createSlice({
       localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
 
+    // ✅ هنا تضيف toggleFavorite داخل reducers
     toggleFavorite: (state, action) => {
       const itemId = action.payload.id;
       const exists = state.favorites.find(item => item.id === itemId);
@@ -82,24 +70,7 @@ const appSlice = createSlice({
       } else {
         state.favorites.push(action.payload);
       }
-
       localStorage.setItem("favorites", JSON.stringify(state.favorites));
-    },
-  },
+    }
+  }
 });
-
-// تصدير الأفعال
-export const {
-  addToCart,
-  increment,
-  decrement,
-  RemoveAllCart,
-  setUser,
-  Logoutuser,       // ✅ الاسم الصحيح هنا
-  addToFavorites,
-  removeFromFavorites,
-  toggleFavorite
-} = appSlice.actions;
-
-// تصدير الـ reducer
-export default appSlice.reducer;

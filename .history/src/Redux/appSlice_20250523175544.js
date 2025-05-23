@@ -1,4 +1,82 @@
-import { useLoaderData, Link } from 'react-router-dom';
+import { createSlice } from "@reduxjs/toolkit";
+
+// استدعاء البيانات من localStorage أو إعطاء قيمة افتراضية
+const savedProducts = localStorage.getItem("products");
+const savedUserInfo = localStorage.getItem("UserInfo");
+const savedFavorites = localStorage.getItem("favorites");
+
+const initialState = {
+  products: savedProducts ? JSON.parse(savedProducts) : [],
+  UserInfo: savedUserInfo ? JSON.parse(savedUserInfo) : null,
+  favorites: savedFavorites ? JSON.parse(savedFavorites) : [],
+};
+
+const appSlice = createSlice({
+  name: "Ecommerce",
+  initialState,
+  reducers: {
+    addToCart: (state, action) => {
+      const item = state.products.find((item) => item?.id === action.payload?.id);
+      if (item) {
+        if (action.payload?.quantity > 0) {
+          item.quantity += action.payload.quantity;
+        }
+      } else {
+        if (action.payload?.id && action.payload?.quantity > 0) {
+          state.products.push(action.payload);
+        }
+      }
+      localStorage.setItem("products", JSON.stringify(state.products));
+    },
+
+    increment: (state, action) => {
+      const item = state.products.find((item) => item.id === action.payload.id);
+      if (item) {
+        item.quantity++;
+      }
+      localStorage.setItem("products", JSON.stringify(state.products));
+    },
+
+    decrement: (state, action) => {
+      const item = state.products.find((item) => item.id === action.payload.id);
+      if (item && item.quantity > 1) {
+        item.quantity--;
+      }
+      localStorage.setItem("products", JSON.stringify(state.products));
+    },
+
+    RemoveAllCart: (state) => {
+      state.products = [];
+      localStorage.removeItem("products");
+    },
+
+    setUser: (state, action) => {
+      state.UserInfo = action.payload;
+      localStorage.setItem("UserInfo", JSON.stringify(action.payload));
+    },
+
+    Logoutuser: (state) => {
+      state.UserInfo = null;
+      localStorage.removeItem("UserInfo");
+    },
+
+    addToFavorites: (state, action) => {
+      const exists = state.favorites.find(item => item.id === action.payload.id);
+      if (!exists) {
+        state.favorites.push(action.payload);
+      }
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
+    },
+
+    removeFromFavorites: (state, action) => {
+      state.favorites = state.favorites.filter(item => item.id !== action.payload.id);
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
+    },
+  },
+
+
+
+  import { useLoaderData, Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, toggleFavorite } from '../Redux/appSlice';
@@ -124,3 +202,18 @@ const Products = () => {
 };
 
 export default Products;
+
+});
+
+export const {
+  addToCart,
+  increment,
+  decrement,
+  RemoveAllCart,
+  setUser,
+  Logoutuser,
+  addToFavorites,
+  removeFromFavorites,
+} = appSlice.actions;
+
+export default appSlice.reducer;

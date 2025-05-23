@@ -55,7 +55,7 @@ const appSlice = createSlice({
       localStorage.setItem("UserInfo", JSON.stringify(action.payload));
     },
 
-    Logoutuser: (state) => {
+    logoutUser: (state) => {
       state.UserInfo = null;
       localStorage.removeItem("UserInfo");
     },
