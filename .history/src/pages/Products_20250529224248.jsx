@@ -68,7 +68,7 @@ const Products = () => {
               </button>
 
               <img src={product.image} alt={product.title} className="h-40 object-contain mb-4 mx-auto"
-                loading="lazy"
+              
               />
               <h3 className="text-md font-semibold mb-1 text-gray-800">{product.title}</h3>
               <p className="text-sm text-gray-600 mb-2">

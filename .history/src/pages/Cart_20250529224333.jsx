@@ -51,7 +51,7 @@ const Cart = () => {
                   src={product.image}
                   alt={product.title}
                   className="w-28 h-28 object-cover rounded-xl shadow"
-                  loading='lazy'
+                  lo
                 />
                 <div className="text-white text-center sm:text-left w-full">
                   <h2 className="text-lg font-semibold mb-1">{product.title}</h2>

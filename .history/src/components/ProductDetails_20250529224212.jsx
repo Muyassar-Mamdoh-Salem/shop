@@ -54,7 +54,7 @@ const ProductDetails = () => {
                 className="w-full max-w-xs h-64 object-contain sm:h-80 lg:h-96"
                 src={product.image}
                 alt={product.title}
-                loading="lazy"
+                
               />
             </div>
 
