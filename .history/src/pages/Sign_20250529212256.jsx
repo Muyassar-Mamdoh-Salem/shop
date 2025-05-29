@@ -9,26 +9,34 @@ const Sign = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate("/");
-  const dispatch = useDispatch();
+  const dispatsh = useDispatch(); // Use the useDispatch();
 
   const handleLogin = (e) => {
     e.preventDefault();
     const auth = getAuth();
 
     signInWithEmailAndPassword(auth, email, password)
+      //success
       .then((userCredential) => {
+        // Signed in
         const user = userCredential.user;
-        dispatch(
+        console.log("Logged in:", userCredential.user);
+        setTimeout(() => {
+          navigate("/");
+        }, 2000)
+        dispatsh(
           setUser({
             __id: user.uid,
             userName: user.displayName,
             email: user.email,
-          })
-        );
-        navigate("/");
+          }))
+
       })
+      //error
       .catch((error) => {
-        alert("Login failed: " + error.message);
+        const errorCode = error.code;
+        const errorMassege = error.message; 
+    
       });
   };
 
@@ -50,20 +58,26 @@ const Sign = () => {
         </p>
 
         <form className="space-y-4" onSubmit={handleLogin}>
-          {[{
-            icon: Mail,
-            placeholder: "Email Address",
-            value: email,
-            onChange: setEmail,
-            type: "email",
-          }, {
-            icon: Lock,
-            placeholder: "Password",
-            value: password,
-            onChange: setPassword,
-            type: "password",
-          }].map(({ icon: Icon, placeholder, value, onChange, type }, i) => (
-            <div key={i} className="flex items-center gap-3 bg-gray-900 bg-opacity-50 border border-indigo-500 rounded-xl px-4 py-2">
+          {[
+            {
+              icon: Mail,
+              placeholder: "Email Address",
+              value: email,
+              onChange: setEmail,
+              type: "email",
+            },
+            {
+              icon: Lock,
+              placeholder: "Password",
+              value: password,
+              onChange: setPassword,
+              type: "password",
+            },
+          ].map(({ icon: Icon, placeholder, value, onChange, type }, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-3 bg-gray-900 bg-opacity-50 border border-indigo-500 rounded-xl px-4 py-2"
+            >
               <Icon className="w-5 h-5 text-indigo-300" />
               <input
                 type={type}
